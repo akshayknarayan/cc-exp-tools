@@ -9,11 +9,11 @@ rustup.sh:
 go1.13.7.linux-amd64.tar.gz: 
 	wget https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
 
-~/go/bin/go: go1.13.7.linux-amd64.tar.gz
-	tar -C ~/go -xzf go1.13.7.linux-amd64.tar.gz
+./go/bin/go: go1.13.7.linux-amd64.tar.gz
+	tar -C . -xzf go1.13.7.linux-amd64.tar.gz
 
-cc-monitor/cc-server cc-monitor/ccperf: $(shell find ccp_copa/src -name "*.go")
-	env GOROOT=~/go PATH=$(shell $PATH):$GOROOT/bin make -C cc-monitor
+cc-monitor/cc-server cc-monitor/ccperf: $(shell find cc-monitor -name "*.go")
+	GOROOT=./go PATH=$$PATH:./go/bin make -C cc-monitor
 
 ccp-kernel/ccp.ko: ccp-kernel/tcp_ccp.c
 	make -C ccp-kernel
