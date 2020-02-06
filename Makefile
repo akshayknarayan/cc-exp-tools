@@ -1,4 +1,4 @@
-all: iperf/src/iperf nimbus/target/debug/nimbus ccp_copa/target/debug/copa
+all: iperf/src/iperf nimbus/target/release/nimbus ccp_copa/target/release/copa
 
 rustup.sh:
 	curl https://sh.rustup.rs -sSf > rustup.sh
