@@ -1,0 +1,15 @@
+[submodule "ccp-kernel"]
+	path = ccp-kernel
+	url = https://github.com/ccp-project/ccp-kernel.git
+[submodule "nimbus"]
+	path = nimbus
+	url = https://github.com/ccp-project/nimbus.git
+[submodule "ccp_copa"]
+	path = ccp_copa
+	url = https://github.com/akshayknarayan/ccp_copa.git
+[submodule "iperf"]
+	path = iperf
+	url = https://github.com/ccp-project/iperf.git
+[submodule "udping"]
+	path = udping
+	url = https://github.com/akshayknarayan/udping.git

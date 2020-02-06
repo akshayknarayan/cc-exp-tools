@@ -1,3 +1,5 @@
+all: iperf/src/iperf nimbus/target/debug/nimbus ccp_copa/target/debug/copa
+
 rustup.sh:
 	curl https://sh.rustup.rs -sSf > rustup.sh
 
@@ -8,14 +10,14 @@ iperf/src/iperf: iperf/src/*.c
 	cd iperf && ./autogen.sh && ./configure
 	make -C iperf
 
-udping/target/debug/udping_server udping/target/debug/udping_client: ~/.cargo/bin/cargo $(shell find udping/src -name "*.rs")
-	cd udping && ~/.cargo/bin/cargo build
+ccp-kernel/ccp.ko: ccp-kernel/tcp_ccp.c
+	make -C ccp-kernel
 
-nimbus/target/debug/nimbus: ~/.cargo/bin/cargo nimbus/src/lib.rs
-	cd nimbus && ~/.cargo/bin/cargo build
+nimbus/target/release/nimbus: ~/.cargo/bin/cargo nimbus/src/lib.rs
+	cd nimbus && ~/.cargo/bin/cargo build --release
 
-ccp_copa/target/debug/copa: ~/.cargo/bin/cargo $(shell find ccp_copa/src -name "*.rs")
-	cd ccp_copa && ~/.cargo/bin/cargo build
+ccp_copa/target/release/copa: ~/.cargo/bin/cargo $(shell find ccp_copa/src -name "*.rs")
+	cd ccp_copa && ~/.cargo/bin/cargo build --release
 
 # kernel cubic
 # kernel bbr
