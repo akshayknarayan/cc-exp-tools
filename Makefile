@@ -6,9 +6,14 @@ rustup.sh:
 ~/.cargo/bin/cargo: rustup.sh
 	sh rustup.sh -y --default-toolchain=nightly
 
-iperf/src/iperf: iperf/src/*.c
-	cd iperf && ./autogen.sh && ./configure
-	make -C iperf
+go1.13.7.linux-amd64.tar.gz: 
+	wget https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
+
+~/go/bin/go: go1.13.7.linux-amd64.tar.gz
+	tar -C ~/go -xzf go1.13.7.linux-amd64.tar.gz
+
+cc-monitor/cc-server cc-monitor/ccperf: $(shell find ccp_copa/src -name "*.go")
+	env GOROOT=~/go PATH=$(shell $PATH):$GOROOT/bin make -C cc-monitor
 
 ccp-kernel/ccp.ko: ccp-kernel/tcp_ccp.c
 	make -C ccp-kernel
