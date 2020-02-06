@@ -13,3 +13,6 @@
 [submodule "udping"]
 	path = udping
 	url = https://github.com/akshayknarayan/udping.git
+[submodule "cc-monitor"]
+	path = cc-monitor
+	url = https://github.com/fcangialosi/cc-monitor
